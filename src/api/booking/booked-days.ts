@@ -1,18 +1,25 @@
-import { Request, Response } from "express";
-import { prisma } from "../db/db";
+import type { Request, Response } from "express";
 import { getAllBookedDaysController } from "../controllers/Booking";
 
 export default async (req: Request, res: Response) => {
   try {
     switch (req.method) {
       case "GET":
-        return getAllBookedDaysController(req, res);
+        return GET(req, res);
 
       default:
-        return res.status(405).send({ error: "Method not allowed" });
+        return ErrorHandler("Method not allowed", res);
     }
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error });
+    return ErrorHandler(error, res);
   }
+};
+
+export const GET = (req: Request, res: Response) => {
+  return getAllBookedDaysController(req, res);
+};
+
+const ErrorHandler = (error: any, res: Response) => {
+  console.error(error);
+  return res.status(500).json({ error });
 };
