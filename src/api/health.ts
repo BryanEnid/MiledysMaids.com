@@ -1,10 +1,11 @@
 import type { Request, Response } from "express";
+import { getAllBookedDaysController } from "./controllers/Booking";
 
 export default async (req: Request, res: Response) => {
   try {
     switch (req.method) {
       case "GET":
-        return res.status(200).json({ status: "OK", message: "Booking endpoint is healthy" });
+        return getAllBookedDaysController(req, res);
 
       default:
         return res.status(405).send({ error: "Method not allowed" });

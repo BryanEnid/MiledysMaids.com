@@ -1,6 +1,6 @@
 // src/types/cleaningTypes.ts
 
-import { prisma } from "@/api/db/db";
+import { prisma } from "db/db";
 
 export enum CleaningCategory {
   Residential = "RESIDENTIAL",

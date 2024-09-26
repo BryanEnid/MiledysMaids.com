@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../db/db";
+import { prisma } from "../../db/db";
 import moment from "moment";
 
 export const createBookingController = async (req: Request, res: Response) => {
