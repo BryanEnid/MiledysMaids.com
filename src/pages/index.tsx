@@ -34,6 +34,10 @@ export default function IndexPage({ injectedClassNames }: LayoutClassNames) {
     calculate({ ...data });
   };
 
+  React.useEffect(() => {
+    fetch("/api/health");
+  }, []);
+
   return (
     <>
       <section

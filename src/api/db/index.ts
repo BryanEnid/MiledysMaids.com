@@ -1,7 +1,13 @@
-import { PrismaClient } from "@prisma/client";
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
+
+const client = postgres(process.env.DATABASE_URL);
+export const db = drizzle(client);
+
+// import { PrismaClient } from "@prisma/client";
 // const { createClient } = require("@supabase/supabase-js");
 
-export const prisma = new PrismaClient();
+// export const prisma = new PrismaClient();
 
 // const service_role_key =
 //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1kenp1amZ1b3ZhZ2V0bHRtaHJzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNTU2MzMwMiwiZXhwIjoyMDQxMTM5MzAyfQ.uRGOfJOqHo_0acV2K4rmdlTQr_JMC4_0x-OvoA_Zs_8";
